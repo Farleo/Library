@@ -1,5 +1,6 @@
 package tk.lutsiuk.library_vertagelab.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +19,8 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long userId;
 	private String userName;
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private Set<Book> userBooks = new HashSet<>();
 	
 }

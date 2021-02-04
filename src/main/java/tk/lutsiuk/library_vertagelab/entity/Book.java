@@ -17,7 +17,7 @@ public class Book {
 	private Long bookId;
 	private String name;
 	private boolean isAvailable;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
 	
