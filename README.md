@@ -10,3 +10,6 @@ Rest controllers should allow to:
 
 No UI is needed.
 Use any ORM you like
+
+-----
+<img align="center" alt = "" width="auto" src="https://github.com/Farleo/Library/blob/master/swagger.png?raw=true">

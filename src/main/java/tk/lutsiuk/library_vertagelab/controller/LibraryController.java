@@ -1,5 +1,6 @@
 package tk.lutsiuk.library_vertagelab.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import tk.lutsiuk.library_vertagelab.service.LibraryService;
@@ -15,12 +16,14 @@ public class LibraryController {
 	}
 	
 	@PostMapping(value = "/take")
+	@ApiOperation(value = "Certain user take certain book")
 	public void takeBook(@RequestParam("bookId") Long bookId, @RequestParam("userId") Long userId) {
 		libraryService.takeBook(bookId,userId);
 	}
 	
 	@PostMapping(value = "/return")
-	public void takeBook(@RequestParam("bookId") Long bookId) {
+	@ApiOperation(value = "Certain user return certain book")
+	public void returnBook(@RequestParam("bookId") Long bookId) {
 		libraryService.returnBook(bookId);
 	}
 }
