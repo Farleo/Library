@@ -6,5 +6,6 @@ import tk.lutsiuk.library_vertagelab.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
+	
+	User findByUserName(String userName);
 }

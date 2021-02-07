@@ -1,29 +1,44 @@
 package tk.lutsiuk.library_vertagelab.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import tk.lutsiuk.library_vertagelab.entity.Book;
 import tk.lutsiuk.library_vertagelab.service.BookService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/book")
+@RequestMapping(value = "/book", produces = {MediaType.APPLICATION_JSON_VALUE})
 public class BookController {
+
+	private final BookService bookService;
 	
-	@Autowired
-	private BookService bookService;
+	public BookController(BookService bookService) {
+		this.bookService = bookService;
+	}
 	
-	@RequestMapping(value = "/{id}")
+	@GetMapping(value = "/{id}")
 	public Book getBook(@PathVariable Long id) {
 		return bookService.findBookById(id);
 	}
 	
-	@RequestMapping(value = "/all")
+	@GetMapping(value = "/all")
 	public List<Book> getAllBook() {
 		return bookService.findAllBook();
 	}
 	
+	@PostMapping(value = "/add")
+	public void addNewBook(@RequestBody Book book){
+		bookService.addNewBook(book);
+	}
+	
+	@DeleteMapping(value = "/delete/{id}")
+	public void deleteBook(@PathVariable Long id){
+		bookService.deleteBook(id);
+	}
+	
+	@PutMapping(value = "/edit/{id}")
+	public void editBook(@PathVariable Long id, @RequestBody Book book){
+		bookService.editBook(id, book);
+	}
 }

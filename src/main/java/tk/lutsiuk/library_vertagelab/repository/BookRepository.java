@@ -6,5 +6,5 @@ import tk.lutsiuk.library_vertagelab.entity.Book;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-
+	Book findByName(String bookName);
 }
